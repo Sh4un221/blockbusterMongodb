@@ -1,0 +1,90 @@
+{
+    $jsonSchema: {
+      bsonType: 'object',
+      required: [
+        '_id',
+        'id_actor',
+        'full_name',
+        'date_of_birth',
+        'nationality',
+        'biography',
+        'awards',
+        'social_media',
+        'website'
+      ],
+      properties: {
+        _id: {
+          bsonType: 'objectId',
+          description: 'Identificador único para el documento del actor'
+        },
+        id_actor: {
+          bsonType: 'int',
+          description: 'Identificador único del actor'
+        },
+        full_name: {
+          bsonType: 'string',
+          description: 'Nombre completo del actor'
+        },
+        date_of_birth: {
+          bsonType: 'string',
+          description: 'Fecha de nacimiento del actor en formato YYYY-MM-DD'
+        },
+        nationality: {
+          bsonType: 'string',
+          description: 'Nacionalidad del actor'
+        },
+        biography: {
+          bsonType: 'string',
+          description: 'Biografía del actor'
+        },
+        awards: {
+          bsonType: 'array',
+          description: 'Lista de premios recibidos por el actor',
+          items: {
+            bsonType: 'object',
+            required: [
+              'name',
+              'year',
+              'category'
+            ],
+            properties: {
+              name: {
+                bsonType: 'string',
+                description: 'Nombre del premio'
+              },
+              year: {
+                bsonType: 'int',
+                description: 'Año en que se recibió el premio'
+              },
+              category: {
+                bsonType: 'string',
+                description: 'Categoría del premio'
+              }
+            }
+          }
+        },
+        social_media: {
+          bsonType: 'object',
+          description: 'Enlaces a las redes sociales del actor',
+          required: [
+            'twitter',
+            'instagram'
+          ],
+          properties: {
+            twitter: {
+              bsonType: 'string',
+              description: 'URL de Twitter del actor'
+            },
+            instagram: {
+              bsonType: 'string',
+              description: 'URL de Instagram del actor'
+            }
+          }
+        },
+        website: {
+          bsonType: 'string',
+          description: 'Sitio web oficial del actor'
+        }
+      }
+    }
+  }

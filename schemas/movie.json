@@ -1,0 +1,89 @@
+{
+    $jsonSchema: {
+      bsonType: 'object',
+      required: [
+        '_id',
+        'title',
+        'release_year',
+        'genre',
+        'director',
+        'actors',
+        'plot',
+        'ratings'
+      ],
+      properties: {
+        _id: {
+          bsonType: 'objectId',
+          description: 'Identificador único para el documento de la película'
+        },
+        title: {
+          bsonType: 'string',
+          description: 'Título de la película'
+        },
+        release_year: {
+          bsonType: 'int',
+          description: 'Año de lanzamiento de la película'
+        },
+        genre: {
+          bsonType: 'array',
+          description: 'Géneros de la película',
+          items: {
+            bsonType: 'string'
+          }
+        },
+        director: {
+          bsonType: 'string',
+          description: 'Director de la película'
+        },
+        actors: {
+          bsonType: 'array',
+          description: 'Actores principales de la película',
+          items: {
+            bsonType: 'object',
+            required: [
+              'id_actor',
+              'character_name'
+            ],
+            properties: {
+              id_actor: {
+                bsonType: 'int',
+                description: 'ID del actor en la película'
+              },
+              character_name: {
+                bsonType: 'string',
+                description: 'Nombre del personaje interpretado por el actor'
+              }
+            }
+          }
+        },
+        plot: {
+          bsonType: 'string',
+          description: 'Resumen o argumento de la película'
+        },
+        ratings: {
+          bsonType: 'array',
+          description: 'Calificaciones recibidas por la película',
+          items: {
+            bsonType: 'object',
+            required: [
+              'source',
+              'rating'
+            ],
+            properties: {
+              source: {
+                bsonType: 'string',
+                description: 'Fuente de la calificación (por ejemplo, IMDb, Rotten Tomatoes)'
+              },
+              rating: {
+                bsonType: [
+                  'double',
+                  'int'
+                ],
+                description: 'Valor de la calificación'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
